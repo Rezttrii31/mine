@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fff3f6" />
+  <title>For Abang — A Birthday Love Letter</title>
+
+  <style>
+    :root {
+      --bg: #fff3f6;
+      --paper: #fffdf9;
+      --pink: #ffd2df;
+      --rose: #ad4b70;
+      --yellow: #ffecad;
+      --blue: #dcecff;
+      --ink: #58434b;
+      --muted: #927c84;
+      --border: #eedce2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 15%, #ffe0ea, transparent 35%),
+        radial-gradient(circle at 85% 85%, #e4eaff, transparent 35%),
+        var(--bg);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--rose);
+      outline-offset: 4px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .app {
+      width: min(100% - 28px, 520px);
+      min-height: 100svh;
+      margin: auto;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Bagian atas */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 0 5px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .brand {
+      letter-spacing: 1px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #e5cfd8;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .dot.active {
+      background: var(--rose);
+      transform: scale(1.3);
+    }
+
+    .dot.done {
+      background: #c68da2;
+    }
+
+    /* Kartu utama */
+
+    .screen {
+      position: relative;
+      width: 100%;
+      padding: 32px 25px 25px;
+      border: 2px solid white;
+      border-radius: 30px;
+      background: rgba(255, 253, 249, 0.96);
+      box-shadow:
+        0 18px 55px rgba(130, 75, 97, 0.12),
+        0 0 0 1px var(--border);
+      text-align: center;
+    }
+
+    .screen.entering {
+      animation: enter 0.35s ease-out;
+    }
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 0 0 15px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: var(--pink);
+      color: var(--rose);
+      font-size: 0.72rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    h1,
+    h2 {
+      margin: 0 0 15px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 9vw, 3.5rem);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 7vw, 2.6rem);
+    }
+
+    p {
+      margin: 0 0 18px;
+      line-height: 1.7;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .small {
+      margin: 15px 0 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .big-emoji {
+      display: block;
+      margin: 5px 0 20px;
+      font-size: 4.5rem;
+      line-height: 1.2;
+      animation: bob 3s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      50% {
+        transform: translateY(-8px) rotate(5deg);
+      }
+    }
+
+    /* Tombol */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 2px solid var(--ink);
+      border-radius: 15px;
+      background: var(--pink);
+      color: var(--ink);
+      box-shadow: 3px 4px 0 var(--ink);
+      font-weight: bold;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button:active {
+      transform: translate(3px, 4px);
+      box-shadow: none;
+    }
+
+    .button.yellow {
+      background: var(--yellow);
+    }
+
+    .button.blue {
+      background: var(--blue);
+    }
+
+    .button.full {
+      width: 100%;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 23px;
+    }
+
+    .text-button {
+      padding: 8px 10px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .text-button:hover {
+      color: var(--rose);
+    }
+
+    /* Galeri klik */
+
+    .polaroid {
+      position: relative;
+      width: min(100%, 275px);
+      margin: 22px auto 18px;
+      padding: 10px 10px 16px;
+      background: white;
+      box-shadow: 0 8px 25px #68414b1a;
+      transform: rotate(-3deg);
+    }
+
+    .polaroid::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: calc(50% - 35px);
+      width: 70px;
+      height: 23px;
+      background: #ffe5a6cc;
+      transform: rotate(5deg);
+    }
+
+    .polaroid img {
+      display: block;
+      width: 100%;
+      height: clamp(175px, 30svh, 270px);
+      object-fit: cover;
+      background: var(--pink);
+    }
+
+    .polaroid figcaption {
+      padding: 13px 3px 0;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .round-button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: white;
+      color: var(--ink);
+      font-size: 1.1rem;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    /* Video */
+
+    .video-frame {
+      margin-top: 20px;
+      padding: 9px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      box-shadow: 5px 5px 0 var(--blue);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: 40svh;
+      border-radius: 12px;
+      background: #30252b;
+    }
+
+    /* Selfie tersembunyi */
+
+    .selfie-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 23px 0 0;
+    }
+
+    .selfie-button {
+      position: relative;
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: white;
+      transform: rotate(-4deg);
+    }
+
+    .selfie-button:nth-child(2) {
+      transform: rotate(4deg);
+    }
+
+    .selfie-button img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .selfie-cover {
+      position: absolute;
+      inset: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: var(--ink);
+      font-size: 0.8rem;
+    }
+
+    .selfie-button:nth-child(2) .selfie-cover {
+      background: var(--pink);
+    }
+
+    .selfie-cover span {
+      font-size: 2rem;
+    }
+
+    .selfie-button.revealed .selfie-cover {
+      display: none;
+    }
+
+    /* Foto bersama */
+
+    .together-photo {
+      width: 100%;
+      max-height: 36svh;
+      margin: 8px 0 17px;
+      object-fit: contain;
+      border: 8px solid white;
+      border-radius: 8px;
+      background: #f7e9ee;
+      box-shadow: 0 8px 20px #68414b12;
+      transform: rotate(-2deg);
+    }
+
+    /* Surat per halaman */
+
+    .letter-paper {
+      margin: 20px 0 0;
+      padding: 24px 20px;
+      border: 1px solid #e8d9c6;
+      border-radius: 14px;
+      background: #fff9ec;
+      text-align: left;
+    }
+
+    .letter-page {
+      min-height: 170px;
+      margin: 0;
+      line-height: 1.9;
+      font-size: 0.95rem;
+      white-space: pre-line;
+    }
+
+    .letter-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      gap: 10px;
+    }
+
+    /* Kue dan hadiah */
+
+    .cake-button {
+      display: block;
+      margin: 10px auto 15px;
+      padding: 10px 25px;
+      border: 0;
+      background: transparent;
+      font-size: 5rem;
+      transition: transform 0.2s;
+    }
+
+    .cake-button:hover {
+      transform: scale(1.08) rotate(-5deg);
+    }
+
+    .wish-result {
+      margin: 22px 0 0;
+      padding: 20px 16px;
+      border: 2px dashed #dcb778;
+      border-radius: 18px;
+      background: #fff0c8;
+    }
+
+    .wish-result h3 {
+      margin: 0 0 10px;
+    }
+
+    .wish-result p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Navigasi bawah */
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 40px;
+      margin-top: 12px;
+    }
+
+    .step-label {
+      padding-right: 8px;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .footer {
+      margin: 10px 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.72rem;
+    }
+
+    /* Konfeti */
+
+    .confetti {
+      position: fixed;
+      z-index: 100;
+      top: -25px;
+      width: 10px;
+      height: 15px;
+      pointer-events: none;
+      animation: fall var(--duration) linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110svh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .screen {
+        padding: 25px 17px 20px;
+      }
+
+      .button {
+        padding: 11px 15px;
+        font-size: 0.9rem;
+      }
+
+      .letter-paper {
+        padding: 18px 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Luxury editorial redesign — romantic, restrained, mobile-first */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+    :root { --bg:#f7f0eb; --paper:#fffdf9; --pink:#ead1d4; --rose:#823f53; --yellow:#eee3d1; --blue:#e9e1db; --ink:#402c34; --muted:#876e77; --border:#e8d8d6; }
+    body { background: radial-gradient(ellipse at 10% 4%, #f2dcd9 0%, transparent 35%), radial-gradient(ellipse at 100% 90%, #e9d7cf 0%, transparent 38%),linear-gradient(150deg,#fbf5ef,#f6eae8 70%,#faf5ef); font-family:'DM Sans',Arial,sans-serif; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.25; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.12' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .app {width:min(100% - 32px,580px); padding:32px 0 24px;}
+    .topbar { margin-bottom:20px; padding:0 5px; font-size:.69rem; letter-spacing:.15em; }
+    .brand {font-weight:700; letter-spacing:.14em; color:#81475b;}
+    .dots {gap:7px;} .dot {width:5px;height:5px;background:#dcc6c7;} .dot.active {background:#87455a;transform:scale(1.55);} .dot.done {background:#b88a97;}
+    .screen { overflow:hidden; padding:45px clamp(23px,6vw,43px) 37px; border:1px solid #fff9f5; border-radius:9px; background:rgba(255,252,248,.91); box-shadow:0 25px 65px #75475216,0 1px 0 #ffffff inset,0 0 0 1px #e9ded8; }
+    .screen::before,.screen::after {content:"✦";position:absolute;font-size:16px;color:#bc9c85;opacity:.65;} .screen::before{top:17px;left:19px;} .screen::after{bottom:17px;right:19px;}
+    .tag { background:transparent; border:1px solid #e4c9c8; border-radius:100px; padding:7px 16px; margin-bottom:26px; color:#975a67; font-size:.64rem; letter-spacing:.16em; font-weight:700; }
+    h1,h2 {font-family:'Playfair Display',Georgia,serif; font-weight:500; line-height:1.22; letter-spacing:-.035em; margin-bottom:20px;}
+    h1 {font-size:clamp(2.5rem,9.3vw,4.15rem);} h2{font-size:clamp(2.1rem,7.2vw,3.4rem);} h2 em {font-weight:400;color:#a25e71;}
+    p{line-height:1.85;} .muted {font-size:.95rem;color:#826b74;line-height:1.9;} .small {color:#9a8187;line-height:1.8;}
+    .hero-heart {display:block;color:#a25c73;font-family:Georgia,serif;font-size:7rem;line-height:.95;margin:5px auto 24px;text-shadow:0 7px 24px #c5829033;animation:bob 4s ease-in-out infinite;} .small-heart {font-size:6.2rem;}
+    .ornament {font-family:Georgia,serif;font-size:1.2rem;color:#c1989e;letter-spacing:.3em;margin:-6px 0 19px;}
+    .button {min-height:49px; background:#824458; border:1px solid #824458; color:#fffaf5; border-radius:100px; box-shadow:0 8px 19px #82445826; padding:13px 23px; font-size:.86rem; font-weight:600; letter-spacing:.02em; transition:transform .2s,box-shadow .2s,background .2s;}
+    .button.yellow,.button.blue {background:#824458;color:#fffaf5;} .button:hover{transform:translateY(-2px);background:#6b3446;box-shadow:0 12px 22px #82445830;} .button:active{transform:translateY(0);box-shadow:0 4px 10px #82445822;}
+    .actions{margin-top:28px;gap:10px;} .text-button {color:#8b6470;text-decoration:underline;text-decoration-color:#d9bfc5;text-underline-offset:4px;} .text-button:hover{color:#6d3547;}
+    .polaroid{width:min(100%,290px);padding:9px 9px 18px;background:white;box-shadow:0 17px 35px #4e27301b;transform:rotate(-2deg);margin:26px auto 24px;} .polaroid::before{background:#b47c8055; width:72px;left:calc(50% - 36px);height:17px;top:-7px;} .polaroid img{background:#e9d6d2;} .polaroid figcaption {font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1rem;}
+    .round-button{width:43px;height:43px;border-color:#dfceca;color:#824458;} .counter{font-size:.81rem;letter-spacing:.06em;} .selfie-grid{gap:16px;margin-top:28px;} .selfie-button{border:1px solid #e7d8d3;border-radius:4px;padding:7px 7px 15px;box-shadow:0 8px 19px #4e273012;} .selfie-button img{border-radius:2px;} .selfie-cover{border-radius:2px;background:#eadbda;color:#754558;} .selfie-button:nth-child(2) .selfie-cover{background:#eee1d7;}
+    .together-photo{border:9px solid white;border-bottom-width:24px;border-radius:3px;box-shadow:0 13px 30px #4e273017;transform:rotate(-1.5deg);}
+    .letter-paper{padding:28px 23px;margin-top:25px;background:#fffaf2;border:1px solid #e8d9c9;border-radius:2px;box-shadow:0 8px 22px #835e4310;text-align:left;} .letter-page{font-family:Georgia,serif;font-size:1rem;line-height:2;color:#5d4850;} .letter-footer{border-top:1px solid #ede0d2;padding-top:10px;}
+    .cake-button{filter:drop-shadow(0 10px 17px #82445822);font-size:5.5rem;} .wish-result{background:#faf2e7;border:1px solid #d7baa0;border-radius:6px;} .wish-result h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:1.4rem;}
+    .bottom-nav{padding:5px 3px 0;} .step-label{font-size:.69rem;letter-spacing:.15em;} .footer{margin-top:22px; font-family:'Playfair Display',Georgia,serif; font-style:italic; font-size:.81rem;}
+    /* A gentle three-round story challenge */
+    .challenge-card {margin:28px 0 0;padding:25px 20px 22px;border:1px solid #e7d4d1;background:linear-gradient(160deg,#fff9f6,#f9f0eb);border-radius:7px;text-align:left;}
+    .challenge-head{display:flex;justify-content:space-between;font-size:.69rem;letter-spacing:.12em;color:#986576;font-weight:700;} .challenge-head span:last-child{font-family:Georgia,serif;font-size:1.1rem;}
+    .challenge-track{height:3px;background:#e9d5d3;border-radius:9px;margin:13px 0 24px;overflow:hidden;} .challenge-track span{display:block;width:33%;height:100%;background:#9d6172;transition:width .3s;}
+    .challenge-card h3{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.3rem,5vw,1.65rem);font-weight:500;line-height:1.4;margin:0 0 22px;}
+    .quiz-options{display:grid;gap:10px;} .quiz-option{width:100%;padding:13px 14px;text-align:left;background:#fffdf9;border:1px solid #e6d6d4;border-radius:5px;color:#593d48;font-size:.86rem;line-height:1.5;transition:all .2s;} .quiz-option:not(:disabled):hover{border-color:#af7888;background:#f8ebeb;} .quiz-option.chosen{border-color:#94576b;background:#f0dfe3;color:#713c51;font-weight:700;} .quiz-option:disabled:not(.chosen){opacity:.57;cursor:default;}
+    .quiz-response{min-height:40px;margin:17px 0 6px;font-size:.83rem;color:#8a6471;line-height:1.7;font-style:italic;} .quiz-continue{margin-top:8px;min-height:42px;font-size:.8rem;} .challenge-card .button{min-width:130px;} .confetti{opacity:.9;}
+    @media(max-width:380px){.screen{padding:36px 20px 31px}.letter-paper{padding:19px 16px}.challenge-card{padding:21px 15px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="topbar">
+      <span class="brand">A LITTLE STORY <span aria-hidden="true">✦</span> FOR ABANG</span>
+      <div class="dots" id="progress" aria-hidden="true"></div>
+    </header>
+
+    <!-- LAYAR 1: PEMBUKA -->
+    <section class="screen" data-screen aria-labelledby="title-0">
+      <span class="tag">A PRIVATE LITTLE CELEBRATION</span>
+      <span class="hero-heart" aria-hidden="true">♡</span>
+
+      <h1 id="title-0" tabindex="-1">
+        Halo, manusia<br />kesayangan!
+      </h1>
+
+      <p class="muted">
+        Ada hadiah kecil yang nyasar ke layar.<br />
+        Penerimanya bener Bang Fitrah, kan? 👀
+      </p>
+
+      <div class="actions">
+        <button class="button" data-next>
+          Iyaa.. 
+        </button>
+      </div>
+
+      <p class="small">
+        Psst… bukanya pelan-pelan.<br />
+        Yang bikin agak malu soalnye.
+      </p>
+    </section>
+
+    <!-- LAYAR 2: ULANG TAHUN -->
+    <section class="screen" data-screen hidden aria-labelledby="title-1">
+      <span class="tag">CHAPTER 01 · HAPPY BIRTHDAY</span>
+      <span class="hero-heart small-heart" aria-hidden="true">✧</span>
+
+      <h1 id="title-1" tabindex="-1">
+        Abang udah<br />22 tahun?!
+      </h1>
+
+      <p class="muted">
+        Selamat ulang tahun, sayang! 🤎<br />
+        Bertambah dewasa boleh, tapi jangan tambah galak, pliss 🥲
+      </p>
+
+      <div class="actions">
+        <button class="button yellow" id="birthday-next">
+          Mana hadiahnya? 🎁
+        </button>
+      </div>
+    </section>
+
+    <!-- LAYAR 3: GALERI FOTO -->
+    <section class="screen" data-screen hidden aria-labelledby="title-2">
+      <span class="tag">CHAPTER 02 · LITTLE MEMORIES</span>
+
+      <h2 id="title-2" tabindex="-1">
+        Isinya abang 🤎
+      </h2>
+
+      <p class="muted">
+        Coba klik panahnya. Ada tipe sayaa 😗
+      </p>
+
+      <figure class="polaroid">
+        <img
+          id="gallery-image"
+          src="assets/foto-12.jpg"
+          alt="Foto Abang pertama"
+        />
+        <figcaption id="gallery-caption">
+          Ini siape? manisnyee.. 🫠
+        </figcaption>
+      </figure>
+
+      <div class="gallery-controls">
+        <button
+          class="round-button"
+          id="photo-prev"
+          aria-label="Foto sebelumnya"
+        >←</button>
+
+        <span class="counter" id="photo-counter" aria-live="polite">
+          1 / 3
+        </span>
+
+        <button
+          class="round-button"
+          id="photo-next"
+          aria-label="Foto berikutnya"
+        >→</button>
+      </div>
+
+      <div class="actions">
+        <button class="button" data-next>
+          Oke, abang emang tamvan 😌
+        </button>
+      </div>
+    </section>
+
+    <!-- LAYAR 4: TANTANGAN INTERAKTIF PENGGANTI VIDEO -->
+    <section class="screen" data-screen hidden aria-labelledby="title-3">
+      <span class="tag">CHAPTER 03 · THE LITTLE GAME</span>
+      <div class="ornament" aria-hidden="true">✦ &nbsp; ♡ &nbsp; ✦</div>
+      <h2 id="title-3" tabindex="-1">Seberapa kenal<br><em>cerita kita?</em></h2>
+      <p class="muted">Tiga pertanyaan kecil. Nggak ada jawaban salah—cuma ada kejutan yang menunggu dibuka.</p>
+      <div class="challenge-card">
+        <div class="challenge-head"><span id="quiz-progress">PERTANYAAN 01 / 03</span><span>♡</span></div>
+        <div class="challenge-track"><span id="quiz-track"></span></div>
+        <h3 id="quiz-question"></h3>
+        <div class="quiz-options" id="quiz-options"></div>
+        <p class="quiz-response" id="quiz-response" aria-live="polite"></p>
+        <button class="button quiz-continue" id="quiz-continue" hidden>Berikutnya <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="actions">
+        <button class="button" id="quiz-finish" hidden>Unlock kejutan berikutnya ♡</button>
+      </div>
+    </section>
+
+    <!-- LAYAR 5: BUKA SELFIE -->
+    <section class="screen" data-screen hidden aria-labelledby="title-4">
+      <span class="tag">CHAPTER 04 · HIDDEN MOMENTS</span>
+
+      <h2 id="title-4" tabindex="-1">Ada yang ngumpet 🙈</h2>
+
+      <p class="muted">
+        Klik kartunya buat lihat siapa di balik ini.
+        Ada couple terlucuu..💕
+      </p>
+
+      <div class="selfie-grid">
+        <button
+          class="selfie-button"
+          aria-label="Buka selfie pertama Abang"
+          aria-expanded="false"
+        >
+          <img
+            src="assets/selfie-12.jpeg"
+            alt="Selfie pertama Abang"
+            loading="lazy"
+          />
+          <span class="selfie-cover" aria-hidden="true">
+            <span>🎀</span>
+            click me!
+          </span>
+        </button>
+
+        <button
+          class="selfie-button"
+          aria-label="Buka selfie kedua Abang"
+          aria-expanded="false"
+        >
+          <img
+            src="assets/selfie-21.jpeg"
+            alt="Selfie kedua Abang"
+            loading="lazy"
+          />
+          <span class="selfie-cover" aria-hidden="true">
+            <span>🧸</span>
+            me too!
+          </span>
+        </button>
+      </div>
+
+      <p class="small" id="selfie-note" aria-live="polite">
+        Dua kartu, satu hati eaakk..
+      </p>
+
+      <div class="actions">
+        <button class="button" data-next>
+          Lanjut, dede gakuatt 🫠
+        </button>
+      </div>
+    </section>
+
+    <!-- LAYAR 6: FOTO BERSAMA -->
+    <section class="screen" data-screen hidden aria-labelledby="title-5">
+      <span class="tag">CHAPTER 05 · US</span>
+
+      <h2 id="title-5" tabindex="-1">Kalau ini… kita 🤎</h2>
+
+      <img
+        class="together-photo"
+        src="assets/foto-bersama.jpg"
+        alt="Foto Kita bersama"
+        loading="lazy"
+      />
+
+      <p class="Akumuted">
+        I like this photo 🥰<br />
+        One day harus ada foto asliii yaa sayaaang...
+      </p>
+
+      <div class="actions">
+        <button class="button" data-next>
+          Next, ada surat buat abang 💌
+        </button>
+      </div>
+    </section>
+
+    <!-- LAYAR 7: SURAT -->
+    <section class="screen" data-screen hidden aria-labelledby="title-6">
+      <span class="tag">CHAPTER 06 · THE LETTER</span>
+
+      <h2 id="title-6" tabindex="-1">Baca pelan-pelan ya 🥺</h2>
+
+      <div class="letter-paper">
+        <p class="letter-page" id="letter-text"></p>
+
+        <div class="letter-footer">
+          <span class="counter" id="letter-counter"></span>
+          <button class="text-button" id="letter-next">
+            Lanjut baca →
+          </button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="button" data-next>
+          Abang simpan pesannya 🤍
+        </button>
+      </div>
+    </section>
+
+    <!-- LAYAR 8: KUE DAN HADIAH -->
+    <section class="screen" data-screen hidden aria-labelledby="title-7">
+      <span class="tag">CHAPTER 07 · ONE LAST WISH</span>
+
+      <h2 id="title-7" tabindex="-1">Make a wish, Bang ✨</h2>
+
+      <p class="muted" id="wish-instruction">
+        Pikirin satu harapan dulu.<br />
+        Kalau udah, klik kuenya!
+      </p>
+
+      <button
+        class="cake-button"
+        id="cake"
+        aria-label="Klik kue untuk membuka hadiah terakhir"
+      >🎂</button>
+
+      <div
+        class="wish-result"
+        id="wish-result"
+        role="status"
+        hidden
+      >
+        <h3>Harapan disimpan! 🤍</h3>
+        <p>
+          Semoga satu per satu ketemu jalannye ye, Bang.
+          Sambil nunggu, abang dapat satu voucher peluk 🫂
+          Bisa ditukar pas ketemu (di pelaminan ekhemm..) 
+        </p>
+      </div>
+
+      <div class="actions">
+        <button class="button yellow" id="hug-button" hidden>
+          Tambah satu peluk 🫶
+        </button>
+      </div>
+
+      <p class="small" id="hug-count" aria-live="polite"></p>
+
+      <button class="text-button" id="restart">
+        Buka dari awal lagi ↺
+      </button>
+    </section>
+
+    <nav class="bottom-nav" aria-label="Navigasi hadiah">
+      <button class="text-button" id="back-button" hidden>
+        ← Balik dulu
+      </button>
+      <span class="step-label" id="step-label" aria-live="polite"></span>
+    </nav>
+
+    <p class="footer">Made with care, only for you. ♡</p>
+  </main>
+
+  <script>
+    /* Ubah nama panggilan kamu di sini. */
+    const namaKamu = "[nama panggilan kamu]";
+
+    const screens = [...document.querySelectorAll("[data-screen]")];
+    const progress = document.getElementById("progress");
+    const backButton = document.getElementById("back-button");
+    const stepLabel = document.getElementById("step-label");
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let currentScreen = 0;
+
+    screens.forEach(() => {
+      const dot = document.createElement("span");
+      dot.className = "dot";
+      progress.appendChild(dot);
+    });
+
+    function updateNavigation() {
+      [...progress.children].forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentScreen);
+        dot.classList.toggle("done", index < currentScreen);
+      });
+
+      backButton.hidden = currentScreen === 0;
+      stepLabel.textContent =
+        `BAB ${String(currentScreen + 1).padStart(2, "0")} / ${String(screens.length).padStart(2, "0")}`;
+    }
+
+    function goToScreen(index) {
+      if (index < 0 || index >= screens.length) return;
+
+      screens[currentScreen].hidden = true;
+      screens[currentScreen].classList.remove("entering");
+
+      currentScreen = index;
+
+      const nextScreen = screens[currentScreen];
+      nextScreen.hidden = false;
+      nextScreen.classList.add("entering");
+
+      updateNavigation();
+
+      window.scrollTo({ top: 0, behavior: "auto" });
+      nextScreen.querySelector("h1, h2").focus({
+        preventScroll: true
+      });
+    }
+
+    document.querySelectorAll("[data-next]").forEach(button => {
+      button.addEventListener("click", () => {
+        goToScreen(currentScreen + 1);
+      });
+    });
+
+    backButton.addEventListener("click", () => {
+      goToScreen(currentScreen - 1);
+    });
+
+    document.getElementById("birthday-next").addEventListener("click", () => {
+      goToScreen(currentScreen + 1);
+      confetti(45);
+    });
+
+    /* Galeri foto */
+
+    const photos = [
+      {
+        src: "assets/foto-12.jpg",
+        alt: "Foto Abang pertama",
+        caption: "Ini siapa? manis senyumnyaa 🫠"
+      },
+      {
+        src: "assets/foto-31.jpg",
+        alt: "Foto Abang kedua",
+        caption: "Iya, Bang. Ganteng. Jelas ituu 😌"
+      },
+      {
+        src: "assets/foto-21.jpg",
+        alt: "Foto Abang ketiga",
+        caption: "Ini cool parah sihh 😎"
+      }
+    ];
+
+    let photoIndex = 0;
+
+    function changePhoto(direction) {
+      photoIndex =
+        (photoIndex + direction + photos.length) % photos.length;
+
+      const photo = photos[photoIndex];
+      const image = document.getElementById("gallery-image");
+
+      image.src = photo.src;
+      image.alt = photo.alt;
+
+      document.getElementById("gallery-caption").textContent =
+        photo.caption;
+
+      document.getElementById("photo-counter").textContent =
+        `${photoIndex + 1} / ${photos.length}`;
+    }
+
+    document.getElementById("photo-prev").addEventListener("click", () => {
+      changePhoto(-1);
+    });
+
+    document.getElementById("photo-next").addEventListener("click", () => {
+      changePhoto(1);
+    });
+
+    /* Tantangan ringan: semua pilihan valid, hadiah tetap terbuka. */
+    const quizQuestions = [
+      {
+        question: "Kalau kita punya satu hari tanpa kesibukan, mau ke mana?",
+        options: ["Jalan-jalan tanpa tujuan", "Makan enak berdua", "Duduk dan cerita lama"],
+        responses: ["Boleh. Kadang yang penting bukan tujuannya, tapi temannya.", "Setuju. Makanan enak dan cerita panjang, kombinasi yang pas.", "Pilihan yang sederhana, tapi bisa jadi kenangan paling hangat."]
+      },
+      {
+        question: "Kalau hari lagi melelahkan, kamu paling butuh apa?",
+        options: ["Didengarkan dulu", "Diajak bercanda", "Dikasih ruang sebentar"],
+        responses: ["Semoga selalu ada ruang untuk ceritamu.", "Semoga masih ada hal kecil yang bikin harimu lebih ringan.", "Nggak semua hal harus diselesaikan saat itu juga."]
+      },
+      {
+        question: "Dari semua hadiah, mana yang paling berharga?",
+        options: ["Waktu yang diluangkan", "Kenangan yang disimpan", "Perhatian yang tulus"],
+        responses: ["Waktu yang dipilih untuk seseorang memang berharga.", "Momen kecil pun pantas disimpan baik-baik.", "Kadang perhatian sederhana berarti lebih dari hadiah besar."]
+      }
+    ];
+    let quizIndex = 0;
+    let quizAnswered = false;
+    function renderQuiz() {
+      const item = quizQuestions[quizIndex];
+      quizAnswered = false;
+      document.getElementById("quiz-progress").textContent = `PERTANYAAN ${String(quizIndex + 1).padStart(2, "0")} / 03`;
+      document.getElementById("quiz-track").style.width = `${((quizIndex + 1) / quizQuestions.length) * 100}%`;
+      document.getElementById("quiz-question").textContent = item.question;
+      document.getElementById("quiz-response").textContent = "Pilih jawaban yang paling kamu suka.";
+      document.getElementById("quiz-continue").hidden = true;
+      document.getElementById("quiz-finish").hidden = true;
+      const options = document.getElementById("quiz-options");
+      options.replaceChildren();
+      item.options.forEach((option, i) => {
+        const btn = document.createElement("button");
+        btn.className = "quiz-option";
+        btn.textContent = option;
+        btn.type = "button";
+        btn.addEventListener("click", () => {
+          if (quizAnswered) return;
+          quizAnswered = true;
+          [...options.children].forEach(b => b.disabled = true);
+          btn.classList.add("chosen");
+          document.getElementById("quiz-response").textContent = item.responses[i];
+          if (quizIndex === quizQuestions.length - 1) {
+            document.getElementById("quiz-finish").hidden = false;
+          } else {
+            document.getElementById("quiz-continue").hidden = false;
+          }
+        });
+        options.appendChild(btn);
+      });
+    }
+    document.getElementById("quiz-continue").addEventListener("click", () => { quizIndex++; renderQuiz(); });
+    document.getElementById("quiz-finish").addEventListener("click", () => { confetti(30); goToScreen(currentScreen + 1); });
+
+    /* Kartu selfie */
+
+    document.querySelectorAll(".selfie-button").forEach(button => {
+      button.addEventListener("click", () => {
+        button.classList.add("revealed");
+        button.setAttribute("aria-expanded", "true");
+
+        const opened = document.querySelectorAll(
+          ".selfie-button.revealed"
+        ).length;
+
+        document.getElementById("selfie-note").textContent =
+          opened === 2
+            ? "Duh.. salting diliatin cogan 😳"
+            : "Nah, satu lagi belum dibuka! 👀";
+      });
+    });
+
+    /* Surat dibaca per halaman */
+
+    const letterPages = [
+      `Happy birthday yang ke-22, Abaang! 🎂🤍
+
+Selamat bertambah umur, manusia yang fotonye bise bikin kamek senyum sendiri. Hari ini abang boleh merase paling spesial. Besok juga boleh sih, tapi jangan besar kepala dulu ya. 😚`,
+
+      `Di umur 22 ini, kamek berharap abang makin dekat sama hal-hal yang selama ini abang usahakan.
+
+Semoga ada kabar baik, kesempatan yang tepat, dan lebih banyak hari yang bisa abang tutup dengan perasaan lega.`,
+
+      `Kalau nanti capek atau ade rencane yang belum berhasil, jangan langsung keras same diri sendiri ye, Bang.
+
+Abang ndaa harus punye semue jawabannye sekarang. Kalau mau cerite, kamek mau dengar. Kalau belum mau cerite, ndapapa juga.`,
+
+      `kamek bikinin tempat kecil ini buat abang. Isinya potongan kenangan, selingan kuis, dan kamek yang berusaha bilang sayang tanpa terlalu bucin.
+
+Tapi keknye gagal. 🙃
+
+Selamat ulang tahun, sayang. Peluk jauh buat abang.
+
+Dari kamek,
+$Tari Cantii 🤍`
+    ];
+
+    let letterIndex = 0;
+    const letterText = document.getElementById("letter-text");
+    const letterNext = document.getElementById("letter-next");
+
+    function renderLetter() {
+      letterText.textContent = letterPages[letterIndex];
+
+      document.getElementById("letter-counter").textContent =
+        `${letterIndex + 1} / ${letterPages.length}`;
+
+      letterNext.textContent =
+        letterIndex === letterPages.length - 1
+          ? "Baca ulang ↺"
+          : "Lanjut baca →";
+    }
+
+    letterNext.addEventListener("click", () => {
+      letterIndex = (letterIndex + 1) % letterPages.length;
+      renderLetter();
+    });
+
+    /* Kue dan voucher peluk */
+
+    let hugs = 0;
+
+    const cake = document.getElementById("cake");
+    const hugButton = document.getElementById("hug-button");
+    const hugCount = document.getElementById("hug-count");
+
+    cake.addEventListener("click", () => {
+      document.getElementById("wish-result").hidden = false;
+      document.getElementById("wish-instruction").textContent =
+        "Happy birthday, orang kesayangan! 🎉";
+
+      hugButton.hidden = false;
+      cake.textContent = "🥳";
+
+      if (hugs === 0) hugs = 1;
+
+      hugCount.textContent = `Tabungan peluk abang: ${hugs} 🫂`;
+      confetti(65);
+    });
+
+    hugButton.addEventListener("click", () => {
+      hugs++;
+      hugCount.textContent = `Tabungan peluk abang: ${hugs} 🫂`;
+      confetti(20);
+    });
+
+    document.getElementById("restart").addEventListener("click", () => {
+      goToScreen(0);
+    });
+
+    /* Konfeti */
+
+    function confetti(amount) {
+      if (reducedMotion.matches) return;
+
+      const colors = [
+        "#efa3be",
+        "#f5d274",
+        "#a9c7ef",
+        "#b4d3ad",
+        "#c6afe2"
+      ];
+
+      for (let i = 0; i < amount; i++) {
+        const piece = document.createElement("span");
+        const duration = 2.2 + Math.random() * 2;
+
+        piece.className = "confetti";
+        piece.setAttribute("aria-hidden", "true");
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background =
+          colors[Math.floor(Math.random() * colors.length)];
+        piece.style.setProperty("--duration", `${duration}s`);
+        piece.style.animationDelay = `${Math.random() * 0.3}s`;
+        piece.style.borderRadius =
+          Math.random() > 0.5 ? "50%" : "2px";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+          piece.remove();
+        }, (duration + 0.5) * 1000);
+      }
+    }
+
+    updateNavigation();
+    renderLetter();
+    renderQuiz();
+  </script>
+</body>
+</html>
